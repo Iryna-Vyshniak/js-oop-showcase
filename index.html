@@ -5,7 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS OOP Architecture | Technical Showcase</title>
     <meta name="description" content="Production-ready implementation of JavaScript Object-Oriented Programming tasks including Circle, Marker, and Employee classes.">
+    
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">JS OOP Architecture</h1>
+            <p class="header__subtitle">Technical implementation of classes, encapsulation, and inheritance.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- ==================================================================
+             TASK 1: CIRCLE CLASS
+             ================================================================== -->
+        <section class="task-section" aria-labelledby="heading-task1">
+            <h2 id="heading-task1" class="task-section__heading">1. Circle Class</h2>
+            
+            <div class="form-group">
+                <label for="circleRadius" class="form-label">Enter circle radius (px):</label>
+                <input type="number" id="circleRadius" class="form-input" min="0" step="1" value="50" aria-describedby="circleDesc">
+                <span id="circleDesc" class="sr-only" style="display:none;">Enter radius to dynamically calculate properties.</span>
+            </div>
+            
+            <div class="stats-grid" aria-live="polite">
+                <div class="stat-card">
+                    <div class="stat-card__label">Radius</div>
+                    <div class="stat-card__value" id="outRadius">50</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__label">Diameter</div>
+                    <div class="stat-card__value" id="outDiameter">100</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__label">Area</div>
+                    <div class="stat-card__value" id="outArea">7853.98</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card__label">Circumference</div>
+                    <div class="stat-card__value" id="outCircumference">314.16</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             TASK 2: MARKER CLASS
+             ================================================================== -->
+        <section class="task-section" aria-labelledby="heading-task2">
+            <h2 id="heading-task2" class="task-section__heading">2. Marker Class</h2>
+            
+            <div class="stats-grid" style="margin-bottom: var(--space-md); margin-top: 0;">
+                <div class="form-group">
+                    <label for="markerColor" class="form-label">Marker Color:</label>
+                    <input type="color" id="markerColor" class="form-color" value="#2563eb">
+                </div>
+            </div>
+
+            <div class="ink-status">
+                <span class="form-label">Ink level:</span>
+                <progress id="inkProgress" max="100" value="100" aria-label="Ink level"></progress>
+                <span id="inkPercentage" style="font-variant-numeric: tabular-nums; font-weight: 600;">100%</span>
+            </div>
+
+            <div class="form-group">
+                <label for="markerText" class="form-label">Text to write:</label>
+                <textarea id="markerText" class="form-textarea" placeholder="Enter text here... (Each non-whitespace character consumes 0.5% ink)"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button id="btnWrite" class="btn" type="button">Write Text</button>
+                <button id="btnRefill" class="btn btn--outline" type="button">Refill Marker</button>
+            </div>
+
+            <div id="markerOutput" class="marker-output" aria-live="polite" role="log" aria-label="Written text output"></div>
+        </section>
+
+        <!-- ==================================================================
+             TASK 3: EMPLOYEE TABLE
+             ================================================================== -->
+        <section class="task-section" aria-labelledby="heading-task3">
+            <h2 id="heading-task3" class="task-section__heading">3. Employee Class & Table Generation</h2>
+            
+            <div id="employeeTableContainer">
+                <noscript>JavaScript is required to view the employee table.</noscript>
+            </div>
+        </section>
+
+    </main>
+   <script type="module" src="script.js"></script>
 </body>
 </html> 
