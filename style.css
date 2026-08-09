@@ -1,0 +1,311 @@
+        :root {
+            /* Color System - Light Mode */
+            --clr-bg: #f8fafc;
+            --clr-surface: #ffffff;
+            --clr-surface-alt: #f1f5f9;
+            --clr-text-main: #0f172a;
+            --clr-text-muted: #475569;
+            --clr-primary: #2563eb;
+            --clr-primary-hover: #1d4ed8;
+            --clr-border: #cbd5e1;
+            
+            /* Fluid Typography */
+            --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            
+            --fs-sm: clamp(0.80rem, 0.17vw + 0.76rem, 0.89rem);
+            --fs-base: clamp(1.00rem, 0.34vw + 0.91rem, 1.19rem);
+            --fs-md: clamp(1.25rem, 0.61vw + 1.10rem, 1.58rem);
+            --fs-lg: clamp(1.56rem, 1.00vw + 1.31rem, 2.11rem);
+            --fs-xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem);
+            
+            /* Fluid Spacing */
+            --space-xs: clamp(0.50rem, 0.17vw + 0.46rem, 0.59rem);
+            --space-sm: clamp(0.75rem, 0.34vw + 0.66rem, 0.94rem);
+            --space-md: clamp(1.13rem, 0.68vw + 0.96rem, 1.50rem);
+            --space-lg: clamp(1.69rem, 1.28vw + 1.37rem, 2.38rem);
+            --space-xl: clamp(2.53rem, 2.30vw + 1.96rem, 3.75rem);
+            
+            /* Borders & Shadows */
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-full: 9999px;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Color System - Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --clr-bg: #0f172a;
+                --clr-surface: #1e293b;
+                --clr-surface-alt: #334155;
+                --clr-text-main: #f8fafc;
+                --clr-text-muted: #94a3b8;
+                --clr-primary: #3b82f6;
+                --clr-primary-hover: #60a5fa;
+                --clr-border: #334155;
+            }
+        }
+
+        /* ==========================================================================
+           RESET & BASE STYLES
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            font-size: var(--fs-base);
+            line-height: 1.6;
+            color: var(--clr-text-main);
+            background-color: var(--clr-bg);
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: var(--space-xl);
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--clr-text-main);
+        }
+
+        *:focus-visible {
+            outline: 3px solid var(--clr-primary);
+            outline-offset: 2px;
+        }
+
+        /* ==========================================================================
+           LAYOUT & COMPONENTS
+           ========================================================================== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .header {
+            padding: var(--space-xl) 0 var(--space-lg);
+            text-align: center;
+            border-bottom: 1px solid var(--clr-border);
+            margin-bottom: var(--space-xl);
+        }
+
+        .header__title {
+            font-size: var(--fs-xl);
+            margin-bottom: var(--space-xs);
+        }
+
+        .header__subtitle {
+            color: var(--clr-text-muted);
+            font-size: var(--fs-md);
+        }
+
+        .task-section {
+            background-color: var(--clr-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--clr-border);
+        }
+
+        .task-section__heading {
+            font-size: var(--fs-lg);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--clr-surface-alt);
+        }
+
+        /* Forms & Inputs */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: var(--fs-sm);
+        }
+
+        .form-input, .form-textarea, .form-color {
+            width: 100%;
+            padding: var(--space-sm);
+            background-color: var(--clr-bg);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            color: var(--clr-text-main);
+            font-family: inherit;
+            font-size: var(--fs-base);
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-input:hover, .form-textarea:hover {
+            border-color: var(--clr-text-muted);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-color {
+            height: 50px;
+            cursor: pointer;
+            padding: 0.2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            background-color: var(--clr-primary);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: var(--fs-base);
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform 50ms ease;
+        }
+
+        .btn:hover {
+            background-color: var(--clr-primary-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn--outline {
+            background-color: transparent;
+            color: var(--clr-primary);
+            border: 2px solid var(--clr-primary);
+        }
+        
+        .btn--outline:hover {
+            background-color: var(--clr-primary);
+            color: #ffffff;
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        /* Display Grid for Outputs */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .stat-card {
+            background-color: var(--clr-surface-alt);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--clr-border);
+        }
+
+        .stat-card__label {
+            font-size: var(--fs-sm);
+            color: var(--clr-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-card__value {
+            font-size: var(--fs-md);
+            font-weight: 700;
+            margin-top: var(--space-xs);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Specific Task Styles */
+        
+        /* Task 2: Marker */
+        .ink-status {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        progress {
+            appearance: none;
+            width: 100%;
+            height: 12px;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+        progress::-webkit-progress-bar { background-color: var(--clr-border); }
+        progress::-webkit-progress-value { background-color: var(--clr-primary); transition: width 0.3s ease; }
+        progress::-moz-progress-bar { background-color: var(--clr-primary); transition: width 0.3s ease; }
+        
+        .marker-output {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background-color: var(--clr-surface-alt);
+            border: 1px dashed var(--clr-border);
+            border-radius: var(--radius-md);
+            min-height: 100px;
+            font-family: var(--font-family-mono);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        /* Dynamic color application using CSS Custom Properties */
+        .marker-text {
+            color: var(--dynamic-color, inherit);
+        }
+
+        /* Task 3: Table */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--clr-border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .data-table th, .data-table td {
+            padding: var(--space-sm) var(--space-md);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .data-table th {
+            background-color: var(--clr-surface-alt);
+            font-weight: 600;
+            color: var(--clr-text-muted);
+            text-transform: uppercase;
+            font-size: var(--fs-sm);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: var(--clr-surface-alt);
+        }
+  
